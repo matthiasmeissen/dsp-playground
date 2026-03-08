@@ -8,8 +8,8 @@ Philosophy: build fluency, not academic mastery. Know what things do, what the k
 
 | Chunk | Topic          | Days  | Status      |
 |-------|----------------|-------|-------------|
-| 0     | Scaffold       | 1–4   | 🔄 In progress |
-| 1     | Oscillators    | 5–12  | ⬜ Not started |
+| 0     | Scaffold       | 1–6   | ✅ Done |
+| 1     | Oscillators    | 7–12  | ⬜ Not started |
 | 2     | Filters        | 13–20 | ⬜ Not started |
 | 3     | Envelopes      | 21–25 | ⬜ Not started |
 | 4     | Noise & Random | 26–28 | ⬜ Not started |

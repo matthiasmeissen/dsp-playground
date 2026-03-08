@@ -16,7 +16,7 @@ impl Sine {
             phase: 0.0, 
             phase_increment: 0.0, 
             sample_rate, 
-            amplitude: 0.0 
+            amplitude: 1.0, 
         }
     }
 

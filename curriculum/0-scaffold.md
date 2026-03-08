@@ -1,6 +1,7 @@
 # Chunk 0 — Scaffold
 
 **Day budget:** 4 days
+**Status:** ✅ Done
 **Status:** ⬜ Not started
 
 ### What does it do?
