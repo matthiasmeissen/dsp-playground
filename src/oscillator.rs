@@ -4,3 +4,6 @@ pub use sine::*;
 
 pub mod naive;
 pub use naive::*;
+
+pub mod wavetable;
+pub use wavetable::*;
