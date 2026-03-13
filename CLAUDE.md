@@ -32,6 +32,8 @@ cargo test                                     # run tests
 
 **Denormal flush in every feedback loop.** Any IIR filter or delay with internal state that feeds back must include `if x.abs() < 1e-15 { x = 0.0 }` after each state update.
 
+**No `% 1.0` in hot paths.** Use `if phase >= 1.0 { phase -= 1.0 }` for phase wrapping inside `process()`. The modulo operator compiles to a slow `fmod` call; the branch is two instructions.
+
 ## Skills — use these
 
 Four skills are installed in `.claude/skills/`. They orient themselves by reading README.md and the `curriculum/` files.

@@ -7,3 +7,6 @@ pub use naive::*;
 
 pub mod wavetable;
 pub use wavetable::*;
+
+pub mod blep;
+pub use blep::*;
