@@ -10,3 +10,6 @@ pub use wavetable::*;
 
 pub mod blep;
 pub use blep::*;
+
+pub mod lfo;
+pub use lfo::*;
