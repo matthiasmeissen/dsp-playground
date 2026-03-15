@@ -13,3 +13,6 @@ pub use blep::*;
 
 pub mod lfo;
 pub use lfo::*;
+
+pub mod unison;
+pub use unison::*;

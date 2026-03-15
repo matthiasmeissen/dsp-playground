@@ -36,7 +36,7 @@ cargo test                                     # run tests
 
 ## Skills — use these
 
-Four skills are installed in `.claude/skills/`. They orient themselves by reading README.md and the `curriculum/` files.
+Five skills are installed in `.claude/skills/`. They orient themselves by reading README.md and the `curriculum/` files.
 
 | Say this | Skill | When |
 |---|---|---|
@@ -44,6 +44,7 @@ Four skills are installed in `.claude/skills/`. They orient themselves by readin
 | "I don't understand X" | `dsp-instructor` | Stuck on a concept or debugging |
 | "review my chunk" | `chunk-reviewer` | Before marking a chunk ✅ done |
 | "add a chunk for X" | `add-chunk` | Extending the curriculum |
+| "how do I make X sound" | `sound-designer` | Translate musical intent into DSP parameters |
 
 ## DSP library conventions
 
