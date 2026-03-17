@@ -1,4 +1,4 @@
-use cpal::traits::{DeviceTrait, HostTrait, StreamTrait};
+use cpal::traits::{DeviceTrait, HostTrait};
 use dsp_lib::{Process, oscillator::{Naive, Waveform}};
 
 mod utils { pub mod render; }

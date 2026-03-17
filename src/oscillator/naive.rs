@@ -8,9 +8,10 @@ pub enum Waveform {
 }
 
 /// Simple oscillator using direct phase-to-waveform math.
+/// 
 /// Produces saw, square, and triangle from the same phase accumulator.
 /// "Naive" because sharp waveform edges cause aliasing at higher frequencies.
-/// Use other oscialltors instead when aliasing matters (above ~1kHz).
+/// Use other oscillators instead when aliasing matters (above ~1kHz).
 pub struct Naive {
     phase: f32,
     phase_increment: f32,
@@ -30,14 +31,17 @@ impl Naive {
         }
     }
 
+    /// Sets the oscillator frequency in Hz.
     pub fn set_frequency(&mut self, freq: f32) {
         self.phase_increment = freq / self.sample_rate;
     }
 
+    /// Sets the output amplitude (1.0 = unity gain).
     pub fn set_amplitude(&mut self, amp: f32) {
         self.amplitude = amp;
     }
 
+    /// Switches to a different waveform without resetting the phase.
     pub fn set_waveform(&mut self, waveform: Waveform) {
         self.waveform = waveform;
     }
@@ -46,9 +50,11 @@ impl Naive {
 impl Process for Naive {
     fn process(&mut self) -> f32 {
         let sample = match self.waveform {
+            // Phase [0, 1) mapped linearly to [-1, +1).
             Waveform::Saw => {
                 self.phase * 2.0 - 1.0
             },
+            // High for the first half-cycle, low for the second.
             Waveform::Square => {
                 if self.phase < 0.5 {
                     1.0
@@ -56,6 +62,8 @@ impl Process for Naive {
                     -1.0
                 }
             },
+            // Rises from -1 to +1 in the first half, falls back to -1 in the second.
+            // Derived by folding a saw: abs(saw) * 2 - 1, written as two linear segments.
             Waveform::Triangle => {
                 if self.phase < 0.5 {
                     self.phase * 4.0 - 1.0
@@ -65,7 +73,8 @@ impl Process for Naive {
             }
         };
 
-        self.phase = (self.phase + self.phase_increment) % 1.0;
+        self.phase += self.phase_increment;
+        if self.phase >= 1.0 { self.phase -= 1.0 };
         
         sample * self.amplitude
     }

@@ -53,7 +53,7 @@ fn main() -> anyhow::Result<()> {
     let sample_rate = config.sample_rate() as f32;
     let channels = config.channels() as usize;
 
-    let mut fm_synth_vibrato = FmSynth::vibrato(sample_rate);
+    //let fm_synth_vibrato = FmSynth::vibrato(sample_rate);
     let mut fm_synth_bell = FmSynth::bell(sample_rate);
 
     render_to_wav("./output/fm_bell.wav", sample_rate, 2.0, || fm_synth_bell.process(), true);

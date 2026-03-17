@@ -4,7 +4,12 @@ use crate::{Process, Reset, SetSampleRate};
 
 const TABLE_SIZE: usize = 2048;
 
-/// Wavetable Oscialltor using precomputed waves
+/// A wavetable oscillator that reads from a precomputed lookup table.
+///
+/// Instead of calling `sin()` every sample, the waveform is stored in an
+/// array at construction time and read back with linear interpolation. This
+/// trades a tiny amount of accuracy for significantly lower per-sample cost,
+/// making it well-suited for polyphonic contexts where many voices run at once.
 pub struct Wavetable {
     table: [f32; TABLE_SIZE],
     phase: f32,
@@ -14,6 +19,7 @@ pub struct Wavetable {
 }
 
 impl Wavetable {
+    /// Creates a wavetable oscillator pre-filled with one cycle of a sine wave.
     pub fn new_sine(sample_rate: f32) -> Self {
         let mut table = [0.0; TABLE_SIZE];
         for i in 0..TABLE_SIZE {
@@ -28,10 +34,12 @@ impl Wavetable {
         }
     }
 
+    /// Sets the oscillator frequency in Hz.
     pub fn set_frequency(&mut self, freq: f32) {
         self.phase_increment = freq / self.sample_rate;
     }
 
+    /// Sets the output amplitude (1.0 = unity gain).
     pub fn set_amplitude(&mut self, amp: f32) {
         self.amplitude = amp;
     }
@@ -52,8 +60,10 @@ impl Process for Wavetable {
         let out = self.table[idx0] * (1.0 - frac) + self.table[idx1] * frac;
 
         // Wrap phase to go from 0.0 - 1.0
-        self.phase = (self.phase + self.phase_increment) % 1.0;
-        out
+        self.phase += self.phase_increment;
+        if self.phase >= 1.0 { self.phase -= 1.0 };
+        
+        out * self.amplitude
     }
 }
 

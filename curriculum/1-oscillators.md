@@ -1,7 +1,7 @@
 # Chunk 1 — Oscillators
 
 **Day budget:** 8 days (Days 5–12)
-**Status:** ⬜ Not started
+**Status:** ✅ Done
 
 ### What does it do?
 An oscillator generates a repeating periodic signal. It is the primary sound source in synthesis. Different waveshapes have different harmonic content: sine is pure, saw is bright and buzzy, square is hollow, triangle sits between them.
