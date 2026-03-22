@@ -10,7 +10,7 @@ Philosophy: build fluency, not academic mastery. Know what things do, what the k
 |-------|----------------|-------|-------------|
 | 0     | Scaffold       | 1–6   | ✅ Done |
 | 1     | Oscillators    | 7–12  | ✅ Done |
-| 2     | Filters        | 13–20 | ⬜ Not started |
+| 2     | Filters        | 13–20 | 🔄 In progress |
 | 3     | Envelopes      | 21–25 | ⬜ Not started |
 | 4     | Noise & Random | 26–28 | ⬜ Not started |
 | 5     | Delay          | 29–36 | ⬜ Not started |
