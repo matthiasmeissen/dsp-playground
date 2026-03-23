@@ -21,6 +21,17 @@ impl OnePole {
         let dt = 1.0 / self.sample_rate;
         self.coefficient = dt / (rc + dt);
     }
+
+    pub fn process_highpass(&mut self, input: f32) -> f32 {
+        let lp = self.process(input);
+        input - lp
+    }
+
+    pub fn dc_blocker(sample_rate: f32) -> Self {
+        let mut f = Self::new(sample_rate);
+        f.set_cutoff(10.0);
+        f
+    }
 }
 
 impl Transform for OnePole {
