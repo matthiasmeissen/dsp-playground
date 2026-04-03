@@ -12,11 +12,12 @@ Philosophy: build fluency, not academic mastery. Know what things do, what the k
 | 1     | Oscillators    | 7–12  | ✅ Done |
 | 2     | Filters        | 13–20 | 🔄 In progress |
 | 3     | Envelopes      | 21–25 | ⬜ Not started |
-| 4     | Noise & Random | 26–28 | ⬜ Not started |
-| 5     | Delay          | 29–36 | ⬜ Not started |
-| 6     | Clock          | 37–41 | ⬜ Not started |
-| 7     | Effects        | 42–47 | ⬜ Not started |
-| 8     | Granular       | 48–60 | ⬜ Not started |
+| 4     | Signal Chain   | 26–30 | ⬜ Not started |
+| 5     | Noise & Random | 31–33 | ⬜ Not started |
+| 6     | Delay          | 34–41 | ⬜ Not started |
+| 7     | Clock          | 42–46 | ⬜ Not started |
+| 8     | Effects        | 47–52 | ⬜ Not started |
+| 9     | Granular       | 53–65 | ⬜ Not started |
 | Flex  | Revisit / Extend | —  | —           |
 
 Status values: `⬜ Not started` → `🔄 In progress` → `✅ Done`
