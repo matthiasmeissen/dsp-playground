@@ -7,3 +7,5 @@ pub use param::*;
 
 pub mod limiter;
 pub use limiter::*;
+
+pub mod diagnostics;

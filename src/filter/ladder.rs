@@ -298,9 +298,11 @@ mod tests {
             let out = f.process(input);
             max_out = max_out.max(out.abs());
         }
+        // No hard clamp — resonant peak can exceed 1.0, but should
+        // stay bounded (not blow up to infinity)
         assert!(
-            max_out <= 1.0,
-            "output should be clamped to [-1, 1], got {max_out}"
+            max_out < 5.0,
+            "output should stay bounded, got {max_out}"
         );
     }
 

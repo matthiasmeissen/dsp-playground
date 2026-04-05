@@ -1,7 +1,7 @@
 # Chunk 2 — Filters
 
 **Day budget:** 8 days (Days 13–20)
-**Status:** 🔄 In progress (completed Day 2.1 and 2.2)
+**Status:** ✅ Done
 
 ### What does it do?
 A filter shapes the frequency content of a signal. It boosts or cuts certain frequency bands. The most common types: **lowpass** (lets lows through, cuts highs — the classic synth sweep sound), **highpass** (the opposite), **bandpass** (lets a band through), **notch** (cuts a band).

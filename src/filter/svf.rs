@@ -1,6 +1,5 @@
 use crate::{Reset, SetSampleRate, Transform};
 
-
 /// State Variable Filter — gives lowpass, bandpass, and highpass simultaneously.
 ///
 /// More stable at high resonance than a biquad, and cheaper to modulate since
@@ -24,20 +23,21 @@ pub struct Svf {
 
 impl Svf {
     pub fn new(sample_rate: f32) -> Self {
-        Self { 
-            lp: 0.0, 
-            bp: 0.0, 
-            f: 0.0, 
-            q: 1.0, 
-            sample_rate 
+        Self {
+            lp: 0.0,
+            bp: 0.0,
+            f: 0.0,
+            q: 1.0,
+            sample_rate,
         }
     }
 
     /// Set filter cutoff (Hz) and resonance.
     ///
-    /// - `cutoff`: frequency in Hz where the filter acts
-    /// - `resonance`: 0.707 = flat (Butterworth), 2.0–5.0 = audible peak, 10.0+ = sharp ringing.
-    ///   Internally inverted (1/resonance), so higher values = more resonance.
+    /// - `cutoff`: frequency in Hz where the filter starts to act (20–20000 typical)
+    /// - `resonance`: Q factor. 0.707 = flat (Butterworth), 2.0–5.0 = audible peak,
+    ///   10.0+ = sharp ringing. Higher values = more resonance.
+    ///   Internally stored as 1/resonance (damping).
     pub fn set_params(&mut self, cutoff: f32, resonance: f32) {
         self.f = 2.0 * (std::f32::consts::PI * cutoff / self.sample_rate).sin();
         self.q = 1.0 / resonance;

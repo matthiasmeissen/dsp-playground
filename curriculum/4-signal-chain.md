@@ -1,6 +1,6 @@
 # Chunk 4 — Signal Chain
 
-**Day budget:** 5 days (Days 26–30)
+**Day budget:** 6 days (Days 26–31)
 **Status:** ⬜ Not started
 
 ### What does it do?
@@ -76,7 +76,18 @@ A Patch holds the signal chain, the modulation routes, and processes everything 
 
 ---
 
-#### Day 4.5 — Review and clean up
+#### Day 4.5 — Gain staging
+**Goal:** Understand how to manage signal levels through the chain so the output stays in a safe range without hard clipping.
+
+Filter resonance, modulation depth, and multiple summed signals can all push levels above 1.0 internally — that's normal and expected in float audio. The problem is only at the final output stage before the DAC.
+
+Build a `Gain` processor (simple multiply, implements `Transform`) and place it at the end of the chain. Use `AudioDiagnostics` to verify peak levels stay below 1.0 at the output. Discuss when to use the safety limiter vs manual gain reduction.
+
+**Exercise:** Take a patch with a resonant filter that clips (like the ladder at resonance 0.6) and add gain staging so it stays clean at the output. Compare with and without — hear that the character is preserved but the clipping is gone.
+
+---
+
+#### Day 4.6 — Review and clean up
 - Ensure Chain and Patch implement `Process` so they can be nested
 - Write `examples/chunk4_signal_chain.rs` — demonstrate building a patch from parts
 - Verify all previous examples still compile

@@ -50,9 +50,10 @@ impl Biquad {
 
     /// Set filter cutoff (Hz), resonance (Q), and mode.
     ///
-    /// - `cutoff`: frequency in Hz where the filter acts
-    /// - `q`: resonance. 0.707 = flat (Butterworth), 1.0 = mild peak, 2.0–5.0 = audible resonance, 10.0+ = sharp ringing
-    /// - `mode`: Lowpass, Highpass, or Bandpass
+    /// - `cutoff`: frequency in Hz where the filter starts to act (20–20000 typical)
+    /// - `q`: resonance (Q factor). 0.707 = flat (Butterworth), 1.0 = mild peak,
+    ///   2.0–5.0 = audible resonance, 10.0+ = sharp ringing
+    /// - `mode`: `BiquadMode::Lowpass`, `Highpass`, or `Bandpass`
     pub fn set_params(&mut self, cutoff: f32, q: f32, mode: BiquadMode) {
         let w0 = std::f32::consts::TAU * cutoff / self.sample_rate;
         let cos_w0 = w0.cos();
